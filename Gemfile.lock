@@ -1,18 +1,15 @@
+PATH
+  remote: .
+  specs:
+    async-grpc (0.1)
+      async-container (= 0.14)
+      async-http
+      google-protobuf
+
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.0.2.1)
-      activesupport (= 6.0.2.1)
-    activerecord (6.0.2.1)
-      activemodel (= 6.0.2.1)
-      activesupport (= 6.0.2.1)
-    activesupport (6.0.2.1)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 2.2)
-    async (1.24.0)
+    async (1.24.1)
       console (~> 1.0)
       nio4r (~> 2.3)
       timers (~> 4.1)
@@ -20,28 +17,22 @@ GEM
       async (~> 1.0)
       async-io (~> 1.4)
       process-group
-    async-http (0.49.1)
+    async-http (0.50.0)
       async (~> 1.23)
       async-io (~> 1.27.0)
+      async-pool (~> 0.2)
       protocol-http (~> 0.13.0)
       protocol-http1 (~> 0.10.0)
       protocol-http2 (~> 0.10.0)
     async-io (1.27.1)
       async (~> 1.14)
-    async-postgres (0.1.0)
-      async (~> 1.3)
-      pg
-    coderay (1.1.2)
-    concurrent-ruby (1.1.5)
-    console (1.6.0)
+    async-pool (0.2.0)
+      async (~> 1.8)
+    console (1.7.0)
+    diff-lcs (1.3)
     ffi (1.11.3)
     google-protobuf (3.11.2)
-    i18n (1.7.0)
-      concurrent-ruby (~> 1.0)
-    method_source (0.9.2)
-    minitest (5.13.0)
     nio4r (2.5.2)
-    pg (1.2.0)
     process-group (1.2.1)
       process-terminal (~> 0.2.0)
     process-terminal (0.2.0)
@@ -53,26 +44,30 @@ GEM
     protocol-http2 (0.10.4)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.2)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
-    thread_safe (0.3.6)
+    rake (10.5.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.2)
     timers (4.3.0)
-    tzinfo (1.2.6)
-      thread_safe (~> 0.1)
-    zeitwerk (2.2.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
-  async-container (= 0.14)
-  async-http
-  async-postgres
-  google-protobuf
-  pg
-  pry
+  async-grpc!
+  bundler (~> 2.0)
+  rake (~> 10.0)
+  rspec (~> 3.0)
 
 BUNDLED WITH
-   2.0.2
+   2.0.1
