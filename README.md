@@ -29,7 +29,7 @@ end
 Requires a working go installation
 
 ```
-go get github.com/twitchtv/twirp-ruby/protoc-gen-twirp_ruby
+go get github.com/shidel-dev/async-grpc/protoc-gen-async_grpc_ruby
 ```
 
 Make sure `protoc-gen-async_grpc_ruby` is in your path
