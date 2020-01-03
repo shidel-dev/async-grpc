@@ -1,6 +1,6 @@
 # async-grpc
 
-An async grpc implimentation for ruby. Build on top of [Async](https://github.com/socketry/async), and [google-protobuf](https://rubygems.org/gems/google-protobuf/)
+An async grpc implementation for ruby. Build on top of [Async](https://github.com/socketry/async), and [google-protobuf](https://rubygems.org/gems/google-protobuf/)
 
 
 Supports:
