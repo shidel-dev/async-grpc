@@ -14,7 +14,7 @@ TLDR; For many workloads it can handle higher concurrency, with lower latency th
 [The reference implimentation of grpc for ruby](https://github.com/grpc/grpc/tree/master/src/ruby) is built on top of a c++ server implimentation, with c shims, and a ruby wrapper. It has a concurrency model that does not suit low lantancy responses when there are concurrent requests. The reason for this is due to the fact that it uses a bounded thread pool to execute application code. While this might work for some use cases it is limiting due the [GIL](https://en.wikipedia.org/wiki/Global_interpreter_lock), and switching/memory overhead of threads. [Reference](https://www.codeotaku.com/journal/2018-11/fibers-are-the-right-solution/index).
 
 ## How do use it?
-For users for the reference implimentation it should be a drop in replacement (TODO: fix some things that make this statement not true).
+For users of the reference implimentation it should be a drop in replacement (TODO: fix some things that make this statement not true).
 
 ### Installation
 add the following line to you gem file
