@@ -18,6 +18,11 @@ RSpec.describe Async::GRPC::Server do
     class HelloworldTestService < Helloworld::GreeterService
       def say_hello(req, metadata)
         raise "ERROR" if req.name == "ERROR"
+        if req.name.start_with?( "ERROR=" )
+          _, json = req.name.split("=")
+          error_data = JSON.parse( json )
+          raise Async::GRPC.const_get( error_data.fetch( "error_class" ) ).new( error_data.fetch( "error_detail" ) )
+        end
         Helloworld::HelloReply.new( message: "Hello #{req.name}" )
       end
     end
@@ -92,6 +97,23 @@ RSpec.describe Async::GRPC::Server do
         expect( response["error"] ).to be
         expect(response.fetch( "error" ).fetch( "code" )).to eq( "Unknown" )
         expect(response.fetch( "error" ).fetch( "message" )).to eq( "Unknown" )
+
+
+        error = {
+          error_class: "PermissionDenied",
+          error_detail: "This Test Must Fail"
+        }
+        response = make_grpc_request(
+          data: {
+            name: "ERROR=#{error.to_json}"
+          },
+          proto_file: "hello.proto",
+          rpc_path: "helloworld.Greeter/SayHello",
+          port: server_port
+        )
+        expect( response["error"] ).to be
+        expect(response.fetch( "error" ).fetch( "code" )).to eq( "PermissionDenied" )
+        expect(response.fetch( "error" ).fetch( "message" )).to eq( "This Test Must Fail" )
       ensure
         notification.signal
       end

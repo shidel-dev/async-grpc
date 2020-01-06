@@ -142,11 +142,9 @@ module Async
       def handle_error( err, stream )
         status = 2
         message = "Unknown"
-        if err.respond_to?( :grpc_status )
-          status = e.grpc_status
-          if err.respond_to?( :grpc_message )
-            message = e.grpc_message
-          end
+        if err.is_a? Async::GRPC::BadStatus 
+          status = err.code
+          message = err.details
         end
         stream.send_headers(nil, [
           [":status", "200"],
