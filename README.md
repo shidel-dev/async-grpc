@@ -24,7 +24,6 @@ source "https://rubygems.pkg.github.com/shidel-dev" do
 end
 ```
 
-
 ### Code generation
 Requires a working go installation
 
